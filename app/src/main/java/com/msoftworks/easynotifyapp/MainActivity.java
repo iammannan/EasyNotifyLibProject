@@ -1,0 +1,109 @@
+package com.msoftworks.easynotifyapp;
+
+import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.msoftworks.easynotify.EasyNotify;
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText title,body,topic,sound,api_key,click_action;
+    Button push;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        title=findViewById(R.id.ntitle);
+        body=findViewById(R.id.nbody);
+        topic=findViewById(R.id.ntopic);
+        sound=findViewById(R.id.nsound);
+        api_key=findViewById(R.id.api_key);
+        click_action=findViewById(R.id.nclick_action);
+
+        push=findViewById(R.id.push);
+
+        push.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(title.getText().length()==0||body.getText().length()==0||topic.getText().length()==0||
+                        sound.getText().length()==0||api_key.getText().length()==0||click_action.getText().length()==0)
+                {
+                    Snackbar.make(v, "Please fill all the textBoxes", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                }
+                else   callEasyNotify();
+
+            }
+        });
+
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    private void callEasyNotify() {
+        EasyNotify easyNotify = new EasyNotify();
+        easyNotify.setAPI_KEY(api_key.getText().toString());
+        easyNotify.setNtitle(title.getText().toString());
+        easyNotify.setNbody(body.getText().toString());
+        easyNotify.setNtopic(topic.getText().toString());
+        easyNotify.setNclick_action(click_action.getText().toString());
+        easyNotify.setNsound(sound.getText().toString());
+        easyNotify.nPush();
+        easyNotify.setEasyNotifyListener(new EasyNotify.EasyNotifyListener() {
+            @Override
+            public void onNotifySuccess(String s) {
+                Toast.makeText(MainActivity.this, s, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNotifyError(String s) {
+                Toast.makeText(MainActivity.this, s, Toast.LENGTH_SHORT).show();
+            }
+
+        });
+    }
+}
