@@ -3,7 +3,10 @@ An Android Library to send Firebase notifications to users easily.
 
 # Demo
 
-
+![alt tag](https://photos.google.com/photo/AF1QipNXo2WogpGQF_Z_0LeQ4rKShKCJ26IpTnXBSHDa "With empty EditText")
+![alt tag](http://domain.com/path/to/img.png "Completed all EditText")
+![alt tag](http://domain.com/path/to/img.png "Final Result")
+![alt tag](http://domain.com/path/to/img.png "Demo Video")
 
 # Download
 
@@ -31,15 +34,12 @@ An Android Library to send Firebase notifications to users easily.
 * Send by TOPIC or TOKEN
 ```java
    easyNotify.setSendBy(EasyNotify.TOPIC);
+   or
    easyNotify.setSendBy(EasyNotify.TOKEN);
 ```
  * IF Send by TOPIC
  ```java
      easyNotify.setTopic("YOUR_TOPIC");
- ```
- * IF Send by TOKEN
- ```java
-     easyNotify.setToken("YOUR_FIREBASE_TOKEN");
  ```
  * IF Send by TOKEN
  ```java
@@ -71,5 +71,28 @@ An Android Library to send Firebase notifications to users easily.
 
         });
  ``` 
+  * Full Code - Example
+  ```java
+    	EasyNotify easyNotify = new EasyNotify(api_key.getText().toString());
+        easyNotify.setSendBy(EasyNotify.TOPIC);
+        easyNotify.setTopic(topic.getText().toString());
+        easyNotify.setTitle(title.getText().toString());
+        easyNotify.setBody(body.getText().toString());
+        easyNotify.setClickAction(click_action.getText().toString());
+        easyNotify.setSound(sound.getText().toString());
+        easyNotify.nPush();
+        easyNotify.setEasyNotifyListener(new EasyNotify.EasyNotifyListener() {
+            @Override
+            public void onNotifySuccess(String s) {
+                Toast.makeText(MainActivity.this, s, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNotifyError(String s) {
+                Toast.makeText(MainActivity.this, s, Toast.LENGTH_SHORT).show();
+            }
+
+        });
+ ```
 
 
