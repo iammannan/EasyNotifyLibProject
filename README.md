@@ -3,10 +3,10 @@ An Android Library to send Firebase notifications to users easily.
 
 # Demo
 
-![alt tag](https://photos.google.com/photo/AF1QipNXo2WogpGQF_Z_0LeQ4rKShKCJ26IpTnXBSHDa "With empty EditText")
-![alt tag](http://domain.com/path/to/img.png "Completed all EditText")
-![alt tag](http://domain.com/path/to/img.png "Final Result")
-![alt tag](http://domain.com/path/to/img.png "Demo Video")
+![With empty EditText](https://github.com/iammannan/EasyNotifyLibProject/blob/master/demo1.png "With empty EditText")
+![Completed all EditText](https://github.com/iammannan/EasyNotifyLibProject/blob/master/demo2.png "Completed all EditText")
+![Final Result](https://github.com/iammannan/EasyNotifyLibProject/blob/master/demo3.png "Final Result")
+![Demo Video](https://github.com/iammannan/EasyNotifyLibProject/blob/master/demo4.png "Demo Video")
 
 # Download
 
