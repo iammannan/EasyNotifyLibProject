@@ -19,45 +19,55 @@ import okhttp3.Response;
 
 public class EasyNotify {
 
-    public void setNtitle(String ntitle) {
+    public void setTitle(String ntitle) {
         this.ntitle = ntitle;
     }
 
-    public void setNbody(String nbody) {
+    public void setBody(String nbody) {
         this.nbody = nbody;
     }
 
-    public void setNclick_action(String nclick_action) {
+    public void setClickAction(String nclick_action) {
         this.nclick_action = nclick_action;
     }
 
-    public void setNtopic(String ntopic) {
+    public void setTopic(String ntopic) {
         this.ntopic = ntopic;
     }
 
-    public void setAPI_KEY(String API_KEY) {
-        this.API_KEY = API_KEY;
-    }
-
-    public void setNsound(String nsound) {
+    public void setSound(String nsound) {
         this.nsound = nsound;
     }
 
-    private String ntitle;
-    private String nbody;
-    private String nclick_action;
-    private String ntopic;
-    private String nsound;
+    public void setSendBy(String sendBy) {
+        this.sendBy = sendBy;
+    }
+
+    private String ntitle = "title";
+    private String nbody = "body";
+    private String nclick_action = "MAINACTIVITY";
+    private String ntopic = "allDevices";
+    private String ntoken =  "A0CALSKNLKAS45CLKSC655";
+    private String nsound = "default";
+    private String sendBy = TOPIC;
     private String API_KEY;
+
+    public static String TOPIC = "SEND_BY_TOPIC";
+    public static String TOKEN = "SEND_BY_TOKEN";
+
+    private JSONObject notificationObject;
+    private JSONObject dataObject;
+    private JSONObject bodyObject;
+
 
     private void sendNotification() throws IOException, JSONException {
         OkHttpClient client = new OkHttpClient();
 
         MediaType mediaType = MediaType.parse(FireConst.APP_TYPE_JSON);
 
-        JSONObject notificationObject = new JSONObject();
-        JSONObject dataObject = new JSONObject();
-        JSONObject bodyObject = new JSONObject();
+        notificationObject = new JSONObject();
+        dataObject = new JSONObject();
+        bodyObject = new JSONObject();
 
         notificationObject
                 .put("title",ntitle)
@@ -66,10 +76,20 @@ public class EasyNotify {
 
         dataObject.put("message","newMessage");
 
-        bodyObject
-                .put("to","/topics/"+ntopic)
-                .put("notification",notificationObject)
-                .put("data",dataObject);
+        if(sendBy==TOPIC)
+        {
+            bodyObject
+                    .put("to","/topics/"+ntopic)
+                    .put("notification",notificationObject)
+                    .put("data",dataObject);
+        }
+        if(sendBy==TOKEN)
+        {
+            bodyObject
+                    .put("to",ntoken)
+                    .put("notification",notificationObject)
+                    .put("data",dataObject);
+        }
 
         RequestBody body = RequestBody.create(mediaType, bodyObject.toString());
 
@@ -127,7 +147,7 @@ public class EasyNotify {
 
     public interface EasyNotifyListener
     {
-        public void onNotifySuccess(String SuccessResponse);
+        public void onNotifySuccess(String MessageId);
 
         public void onNotifyError(String ErrorResponse);
     }
@@ -135,8 +155,9 @@ public class EasyNotify {
     private EasyNotifyListener listener;
     private Response response;
 
-    public EasyNotify() {
+    public EasyNotify(String API_KEY) {
         this.listener = null;
+        this.API_KEY = API_KEY;
     }
 
     public void setEasyNotifyListener(EasyNotifyListener listener)

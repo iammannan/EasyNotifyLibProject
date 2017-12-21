@@ -5,8 +5,6 @@ group = 'com.github.iammannan'
 android {
     compileSdkVersion 27
 
-
-
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 27

@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
 
     EditText title,body,topic,sound,api_key,click_action;
     Button push;
+    public static final String API_KEY = "AAAAZcxfENs:APA91bFfapdE52NEvfpLVL7eAxuf7CxvoHtYP2_r4cBU79M6Ss_sNpZUx6W8Y2vNpUyi3HLux1TTOcCgKVkLIpmEWomavnaU7rmxfssCvbBcfB_cRAK6Tgdjoy2akEJ00DQwxQv6MDNe";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
         click_action=findViewById(R.id.nclick_action);
 
         push=findViewById(R.id.push);
+
+        api_key.setText(API_KEY);
+        topic.setText("allDevices");
 
         push.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,13 +90,13 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void callEasyNotify() {
-        EasyNotify easyNotify = new EasyNotify();
-        easyNotify.setAPI_KEY(api_key.getText().toString());
-        easyNotify.setNtitle(title.getText().toString());
-        easyNotify.setNbody(body.getText().toString());
-        easyNotify.setNtopic(topic.getText().toString());
-        easyNotify.setNclick_action(click_action.getText().toString());
-        easyNotify.setNsound(sound.getText().toString());
+        EasyNotify easyNotify = new EasyNotify(api_key.getText().toString());
+        easyNotify.setSendBy(EasyNotify.TOPIC);
+        easyNotify.setTitle(title.getText().toString());
+        easyNotify.setBody(body.getText().toString());
+        easyNotify.setTopic(topic.getText().toString());
+        easyNotify.setClickAction(click_action.getText().toString());
+        easyNotify.setSound(sound.getText().toString());
         easyNotify.nPush();
         easyNotify.setEasyNotifyListener(new EasyNotify.EasyNotifyListener() {
             @Override
