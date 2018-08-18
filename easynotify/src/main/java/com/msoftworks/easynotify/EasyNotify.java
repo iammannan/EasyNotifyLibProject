@@ -19,30 +19,6 @@ import okhttp3.Response;
 
 public class EasyNotify {
 
-    public void setTitle(String ntitle) {
-        this.ntitle = ntitle;
-    }
-
-    public void setBody(String nbody) {
-        this.nbody = nbody;
-    }
-
-    public void setClickAction(String nclick_action) {
-        this.nclick_action = nclick_action;
-    }
-
-    public void setTopic(String ntopic) {
-        this.ntopic = ntopic;
-    }
-
-    public void setSound(String nsound) {
-        this.nsound = nsound;
-    }
-
-    public void setSendBy(String sendBy) {
-        this.sendBy = sendBy;
-    }
-
     private String ntitle = "title";
     private String nbody = "body";
     private String nclick_action = "MAINACTIVITY";
@@ -59,6 +35,33 @@ public class EasyNotify {
     private JSONObject dataObject;
     private JSONObject bodyObject;
 
+    public void setTitle(String ntitle) {
+        this.ntitle = ntitle;
+    }
+
+    public void setBody(String nbody) {
+        this.nbody = nbody;
+    }
+
+    public void setClickAction(String nclick_action) {
+        this.nclick_action = nclick_action;
+    }
+
+    public void setTopic(String ntopic) {
+        this.ntopic = ntopic;
+    }
+
+    public void setToken(String ntoken) {
+        this.ntoken = ntoken;
+    }
+
+    public void setSound(String nsound) {
+        this.nsound = nsound;
+    }
+
+    public void setSendBy(String sendBy) {
+        this.sendBy = sendBy;
+    }
 
     private void sendNotification() throws IOException, JSONException {
         OkHttpClient client = new OkHttpClient();

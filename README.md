@@ -22,7 +22,7 @@ An Android Library to send Firebase notifications to users easily.
 * Step 2. Add the dependency
 ```java
     dependencies {
-	        compile 'com.github.iammannan:EasyNotifyLibProject:1.1'
+	        compile 'com.github.iammannan:EasyNotifyLibProject:1.2'
 	}
 ```
 

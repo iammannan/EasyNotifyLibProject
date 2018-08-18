@@ -92,9 +92,9 @@ public class MainActivity extends AppCompatActivity {
     private void callEasyNotify() {
         EasyNotify easyNotify = new EasyNotify(api_key.getText().toString());
         easyNotify.setSendBy(EasyNotify.TOPIC);
+        easyNotify.setTopic(topic.getText().toString());
         easyNotify.setTitle(title.getText().toString());
         easyNotify.setBody(body.getText().toString());
-        easyNotify.setTopic(topic.getText().toString());
         easyNotify.setClickAction(click_action.getText().toString());
         easyNotify.setSound(sound.getText().toString());
         easyNotify.nPush();
