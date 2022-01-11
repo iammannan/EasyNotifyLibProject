@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/EasyNotifyLibProject.iml" filepath="$PROJECT_DIR$/EasyNotifyLibProject.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/easynotify/easynotify.iml" filepath="$PROJECT_DIR$/easynotify/easynotify.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/EasyNotifyLibProject.iml" filepath="$PROJECT_DIR$/.idea/EasyNotifyLibProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/EasyNotifyLibProject.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/EasyNotifyLibProject.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/easynotify/EasyNotifyLibProject.easynotify.iml" filepath="$PROJECT_DIR$/.idea/modules/easynotify/EasyNotifyLibProject.easynotify.iml" />
     </modules>
   </component>
 </project>

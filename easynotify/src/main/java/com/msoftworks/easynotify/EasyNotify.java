@@ -27,6 +27,7 @@ public class EasyNotify {
     private String nsound = "default";
     private String sendBy = TOPIC;
     private String API_KEY;
+    private JSONObject nDataObject;
 
     public static String TOPIC = "SEND_BY_TOPIC";
     public static String TOKEN = "SEND_BY_TOKEN";
@@ -63,6 +64,10 @@ public class EasyNotify {
         this.sendBy = sendBy;
     }
 
+    public void setnDataObject(JSONOject object) {
+        this.nDataObject = object;
+    }
+
     private void sendNotification() throws IOException, JSONException {
         OkHttpClient client = new OkHttpClient();
 
@@ -79,19 +84,24 @@ public class EasyNotify {
 
         dataObject.put("message","newMessage");
 
+        if(nDataObject==null){
+            nDataObject = dataObject;
+        }
+
+
         if(sendBy==TOPIC)
         {
             bodyObject
                     .put("to","/topics/"+ntopic)
                     .put("notification",notificationObject)
-                    .put("data",dataObject);
+                    .put("data",nDataObject);
         }
         if(sendBy==TOKEN)
         {
             bodyObject
                     .put("to",ntoken)
                     .put("notification",notificationObject)
-                    .put("data",dataObject);
+                    .put("data",nDataObject);
         }
 
         RequestBody body = RequestBody.create(mediaType, bodyObject.toString());
