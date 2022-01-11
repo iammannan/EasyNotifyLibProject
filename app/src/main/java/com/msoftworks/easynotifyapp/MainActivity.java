@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     EditText title,body,topic,sound,api_key,click_action;
     Button push;
-    public static final String API_KEY = "AAAAd-IeGNU:APA91bF5KAFaNuehf-V6myfaH3OWOg7rLJb9wQdBkb9EGE3fuAvgvgkulhXWcXMg4E-drpB4xFTaofC8xrxI-pwmr913C2cvdo0UVn6XRyaFmUlTeSm0Mki2Mo82MiJcla4-DgigdvGD";
+    public static final String API_KEY = "AAAAd-IeGNU:APA91bF5KAFaNuehf-sV6myfaH3OWOg7rLJb9wQdBkb9EGE3fuAvgvgkulhXWcXMg4E-drpB4xFTaofC8xrxI-pwmr913C2cvdo0UVn6XRyaFmUlTeSm0Mki2Mo82MiJcla4-DgigdvGD";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
